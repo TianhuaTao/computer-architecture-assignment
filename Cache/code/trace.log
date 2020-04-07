@@ -1,154 +1,171 @@
 ******************  astar.trace  ******************
 Block size: 8
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 117324(30716 read + 86608 write)
-Hit count: 384144(259050 read + 125094 write)
+Replacement: LRU (0 meta bits)
+Miss count: 117324 (30716 read + 86608 write)
+Hit count: 384144 (259050 read + 125094 write)
 Total access count: 501468
 Cache miss rate: 23.3961%
 
 Block size: 32
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 49333(10790 read + 38543 write)
-Hit count: 452135(278976 read + 173159 write)
+Replacement: LRU (0 meta bits)
+Miss count: 49333 (10790 read + 38543 write)
+Hit count: 452135 (278976 read + 173159 write)
 Total access count: 501468
 Cache miss rate: 9.83772%
 
 Block size: 64
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 26418(6864 read + 19554 write)
-Hit count: 475050(282902 read + 192148 write)
+Replacement: LRU (0 meta bits)
+Miss count: 26418 (6864 read + 19554 write)
+Hit count: 475050 (282902 read + 192148 write)
 Total access count: 501468
 Cache miss rate: 5.26813%
 
 Block size: 8
+Cache line meta: 63 bits (tag=61 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 116640(30163 read + 86477 write)
-Hit count: 384828(259603 read + 125225 write)
+Replacement: LRU (14 meta bits)
+Miss count: 116640 (30163 read + 86477 write)
+Hit count: 384828 (259603 read + 125225 write)
 Total access count: 501468
 Cache miss rate: 23.2597%
 
 Block size: 32
+Cache line meta: 61 bits (tag=59 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 48111(9776 read + 38335 write)
-Hit count: 453357(279990 read + 173367 write)
+Replacement: LRU (12 meta bits)
+Miss count: 48111 (9776 read + 38335 write)
+Hit count: 453357 (279990 read + 173367 write)
 Total access count: 501468
 Cache miss rate: 9.59403%
 
 Block size: 64
+Cache line meta: 60 bits (tag=58 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 24908(5585 read + 19323 write)
-Hit count: 476560(284181 read + 192379 write)
+Replacement: LRU (11 meta bits)
+Miss count: 24908 (5585 read + 19323 write)
+Hit count: 476560 (284181 read + 192379 write)
 Total access count: 501468
 Cache miss rate: 4.96702%
 
 Block size: 8
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 116737(30112 read + 86625 write)
-Hit count: 384731(259654 read + 125077 write)
+Replacement: LRU (8 meta bits)
+Miss count: 116737 (30112 read + 86625 write)
+Hit count: 384731 (259654 read + 125077 write)
 Total access count: 501468
 Cache miss rate: 23.2791%
 
 Block size: 32
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 48291(9849 read + 38442 write)
-Hit count: 453177(279917 read + 173260 write)
+Replacement: LRU (8 meta bits)
+Miss count: 48291 (9849 read + 38442 write)
+Hit count: 453177 (279917 read + 173260 write)
 Total access count: 501468
 Cache miss rate: 9.62993%
 
 Block size: 64
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 25123(5693 read + 19430 write)
-Hit count: 476345(284073 read + 192272 write)
+Replacement: LRU (8 meta bits)
+Miss count: 25123 (5693 read + 19430 write)
+Hit count: 476345 (284073 read + 192272 write)
 Total access count: 501468
 Cache miss rate: 5.00989%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 116766(30079 read + 86687 write)
-Hit count: 384702(259687 read + 125015 write)
+Replacement: LRU (24 meta bits)
+Miss count: 116766 (30079 read + 86687 write)
+Hit count: 384702 (259687 read + 125015 write)
 Total access count: 501468
 Cache miss rate: 23.2848%
 
 Block size: 32
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 48279(9806 read + 38473 write)
-Hit count: 453189(279960 read + 173229 write)
+Replacement: LRU (24 meta bits)
+Miss count: 48279 (9806 read + 38473 write)
+Hit count: 453189 (279960 read + 173229 write)
 Total access count: 501468
 Cache miss rate: 9.62753%
 
 Block size: 64
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 25074(5615 read + 19459 write)
-Hit count: 476394(284151 read + 192243 write)
+Replacement: LRU (24 meta bits)
+Miss count: 25074 (5615 read + 19459 write)
+Hit count: 476394 (284151 read + 192243 write)
 Total access count: 501468
 Cache miss rate: 5.00012%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
 Replacement: Random
-Miss count: 116487(30213 read + 86274 write)
-Hit count: 384981(259553 read + 125428 write)
+Miss count: 116487 (30213 read + 86274 write)
+Hit count: 384981 (259553 read + 125428 write)
 Total access count: 501468
 Cache miss rate: 23.2292%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: Binary tree
-Miss count: 116779(30088 read + 86691 write)
-Hit count: 384689(259678 read + 125011 write)
+Replacement: Binary tree ( 7 meta bits )
+Miss count: 116779 (30088 read + 86691 write)
+Hit count: 384689 (259678 read + 125011 write)
 Total access count: 501468
 Cache miss rate: 23.2874%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 173001(30916 read + 142085 write)
-Hit count: 328467(258850 read + 69617 write)
+Replacement: LRU (24 meta bits)
+Miss count: 173001 (30916 read + 142085 write)
+Hit count: 328467 (258850 read + 69617 write)
 Total access count: 501468
 Cache miss rate: 34.4989%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 116766(30079 read + 86687 write)
-Hit count: 384702(259687 read + 125015 write)
+Replacement: LRU (24 meta bits)
+Miss count: 116766 (30079 read + 86687 write)
+Hit count: 384702 (259687 read + 125015 write)
 Total access count: 501468
 Cache miss rate: 23.2848%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 173001(30916 read + 142085 write)
-Hit count: 328467(258850 read + 69617 write)
+Replacement: LRU (24 meta bits)
+Miss count: 173001 (30916 read + 142085 write)
+Hit count: 328467 (258850 read + 69617 write)
 Total access count: 501468
 Cache miss rate: 34.4989%
 
@@ -156,155 +173,172 @@ Cache miss rate: 34.4989%
 
 ******************  bodytrack_1m.trace  ******************
 Block size: 8
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 740(740 read + 0 write)
-Hit count: 289807(289807 read + 0 write)
+Replacement: LRU (0 meta bits)
+Miss count: 740 (740 read + 0 write)
+Hit count: 289807 (289807 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.254692%
 
 Block size: 32
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 740(740 read + 0 write)
-Hit count: 289807(289807 read + 0 write)
+Replacement: LRU (0 meta bits)
+Miss count: 740 (740 read + 0 write)
+Hit count: 289807 (289807 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.254692%
 
 Block size: 64
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 740(740 read + 0 write)
-Hit count: 289807(289807 read + 0 write)
+Replacement: LRU (0 meta bits)
+Miss count: 740 (740 read + 0 write)
+Hit count: 289807 (289807 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.254692%
 
 Block size: 8
+Cache line meta: 63 bits (tag=61 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: LRU (14 meta bits)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 32
+Cache line meta: 61 bits (tag=59 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: LRU (12 meta bits)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 64
+Cache line meta: 60 bits (tag=58 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: LRU (11 meta bits)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 8
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: LRU (8 meta bits)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 32
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: LRU (8 meta bits)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 64
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: LRU (8 meta bits)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 32
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 64
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
 Replacement: Random
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: Binary tree
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: Binary tree ( 7 meta bits )
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 721(721 read + 0 write)
-Hit count: 289826(289826 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 721 (721 read + 0 write)
+Hit count: 289826 (289826 read + 0 write)
 Total access count: 290547
 Cache miss rate: 0.248153%
 
@@ -312,155 +346,172 @@ Cache miss rate: 0.248153%
 
 ******************  bzip2.trace  ******************
 Block size: 8
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 11225(5663 read + 5562 write)
-Hit count: 533289(363681 read + 169608 write)
+Replacement: LRU (0 meta bits)
+Miss count: 11225 (5663 read + 5562 write)
+Hit count: 533289 (363681 read + 169608 write)
 Total access count: 544514
 Cache miss rate: 2.06147%
 
 Block size: 32
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 7248(3638 read + 3610 write)
-Hit count: 537266(365706 read + 171560 write)
+Replacement: LRU (0 meta bits)
+Miss count: 7248 (3638 read + 3610 write)
+Hit count: 537266 (365706 read + 171560 write)
 Total access count: 544514
 Cache miss rate: 1.3311%
 
 Block size: 64
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 8656(4336 read + 4320 write)
-Hit count: 535858(365008 read + 170850 write)
+Replacement: LRU (0 meta bits)
+Miss count: 8656 (4336 read + 4320 write)
+Hit count: 535858 (365008 read + 170850 write)
 Total access count: 544514
 Cache miss rate: 1.58967%
 
 Block size: 8
+Cache line meta: 63 bits (tag=61 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 6627(3371 read + 3256 write)
-Hit count: 537887(365973 read + 171914 write)
+Replacement: LRU (14 meta bits)
+Miss count: 6627 (3371 read + 3256 write)
+Hit count: 537887 (365973 read + 171914 write)
 Total access count: 544514
 Cache miss rate: 1.21705%
 
 Block size: 32
+Cache line meta: 61 bits (tag=59 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 1668(851 read + 817 write)
-Hit count: 542846(368493 read + 174353 write)
+Replacement: LRU (12 meta bits)
+Miss count: 1668 (851 read + 817 write)
+Hit count: 542846 (368493 read + 174353 write)
 Total access count: 544514
 Cache miss rate: 0.306328%
 
 Block size: 64
+Cache line meta: 60 bits (tag=58 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 841(431 read + 410 write)
-Hit count: 543673(368913 read + 174760 write)
+Replacement: LRU (11 meta bits)
+Miss count: 841 (431 read + 410 write)
+Hit count: 543673 (368913 read + 174760 write)
 Total access count: 544514
 Cache miss rate: 0.15445%
 
 Block size: 8
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 6627(3371 read + 3256 write)
-Hit count: 537887(365973 read + 171914 write)
+Replacement: LRU (8 meta bits)
+Miss count: 6627 (3371 read + 3256 write)
+Hit count: 537887 (365973 read + 171914 write)
 Total access count: 544514
 Cache miss rate: 1.21705%
 
 Block size: 32
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 1668(851 read + 817 write)
-Hit count: 542846(368493 read + 174353 write)
+Replacement: LRU (8 meta bits)
+Miss count: 1668 (851 read + 817 write)
+Hit count: 542846 (368493 read + 174353 write)
 Total access count: 544514
 Cache miss rate: 0.306328%
 
 Block size: 64
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 841(431 read + 410 write)
-Hit count: 543673(368913 read + 174760 write)
+Replacement: LRU (8 meta bits)
+Miss count: 841 (431 read + 410 write)
+Hit count: 543673 (368913 read + 174760 write)
 Total access count: 544514
 Cache miss rate: 0.15445%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 6627(3371 read + 3256 write)
-Hit count: 537887(365973 read + 171914 write)
+Replacement: LRU (24 meta bits)
+Miss count: 6627 (3371 read + 3256 write)
+Hit count: 537887 (365973 read + 171914 write)
 Total access count: 544514
 Cache miss rate: 1.21705%
 
 Block size: 32
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 1668(851 read + 817 write)
-Hit count: 542846(368493 read + 174353 write)
+Replacement: LRU (24 meta bits)
+Miss count: 1668 (851 read + 817 write)
+Hit count: 542846 (368493 read + 174353 write)
 Total access count: 544514
 Cache miss rate: 0.306328%
 
 Block size: 64
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 841(431 read + 410 write)
-Hit count: 543673(368913 read + 174760 write)
+Replacement: LRU (24 meta bits)
+Miss count: 841 (431 read + 410 write)
+Hit count: 543673 (368913 read + 174760 write)
 Total access count: 544514
 Cache miss rate: 0.15445%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
 Replacement: Random
-Miss count: 6627(3371 read + 3256 write)
-Hit count: 537887(365973 read + 171914 write)
+Miss count: 6627 (3371 read + 3256 write)
+Hit count: 537887 (365973 read + 171914 write)
 Total access count: 544514
 Cache miss rate: 1.21705%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: Binary tree
-Miss count: 6627(3371 read + 3256 write)
-Hit count: 537887(365973 read + 171914 write)
+Replacement: Binary tree ( 7 meta bits )
+Miss count: 6627 (3371 read + 3256 write)
+Hit count: 537887 (365973 read + 171914 write)
 Total access count: 544514
 Cache miss rate: 1.21705%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 47209(3913 read + 43296 write)
-Hit count: 497305(365431 read + 131874 write)
+Replacement: LRU (24 meta bits)
+Miss count: 47209 (3913 read + 43296 write)
+Hit count: 497305 (365431 read + 131874 write)
 Total access count: 544514
 Cache miss rate: 8.66993%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 6627(3371 read + 3256 write)
-Hit count: 537887(365973 read + 171914 write)
+Replacement: LRU (24 meta bits)
+Miss count: 6627 (3371 read + 3256 write)
+Hit count: 537887 (365973 read + 171914 write)
 Total access count: 544514
 Cache miss rate: 1.21705%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 47209(3913 read + 43296 write)
-Hit count: 497305(365431 read + 131874 write)
+Replacement: LRU (24 meta bits)
+Miss count: 47209 (3913 read + 43296 write)
+Hit count: 497305 (365431 read + 131874 write)
 Total access count: 544514
 Cache miss rate: 8.66993%
 
@@ -468,155 +519,172 @@ Cache miss rate: 8.66993%
 
 ******************  canneal.uniq.trace  ******************
 Block size: 8
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 5889(5889 read + 0 write)
-Hit count: 543030(543030 read + 0 write)
+Replacement: LRU (0 meta bits)
+Miss count: 5889 (5889 read + 0 write)
+Hit count: 543030 (543030 read + 0 write)
 Total access count: 548919
 Cache miss rate: 1.07284%
 
 Block size: 32
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 5889(5889 read + 0 write)
-Hit count: 543030(543030 read + 0 write)
+Replacement: LRU (0 meta bits)
+Miss count: 5889 (5889 read + 0 write)
+Hit count: 543030 (543030 read + 0 write)
 Total access count: 548919
 Cache miss rate: 1.07284%
 
 Block size: 64
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 5889(5889 read + 0 write)
-Hit count: 543030(543030 read + 0 write)
+Replacement: LRU (0 meta bits)
+Miss count: 5889 (5889 read + 0 write)
+Hit count: 543030 (543030 read + 0 write)
 Total access count: 548919
 Cache miss rate: 1.07284%
 
 Block size: 8
+Cache line meta: 63 bits (tag=61 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 4115(4115 read + 0 write)
-Hit count: 544804(544804 read + 0 write)
+Replacement: LRU (14 meta bits)
+Miss count: 4115 (4115 read + 0 write)
+Hit count: 544804 (544804 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.749655%
 
 Block size: 32
+Cache line meta: 61 bits (tag=59 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 4115(4115 read + 0 write)
-Hit count: 544804(544804 read + 0 write)
+Replacement: LRU (12 meta bits)
+Miss count: 4115 (4115 read + 0 write)
+Hit count: 544804 (544804 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.749655%
 
 Block size: 64
+Cache line meta: 60 bits (tag=58 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 4199(4199 read + 0 write)
-Hit count: 544720(544720 read + 0 write)
+Replacement: LRU (11 meta bits)
+Miss count: 4199 (4199 read + 0 write)
+Hit count: 544720 (544720 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.764958%
 
 Block size: 8
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 4189(4189 read + 0 write)
-Hit count: 544730(544730 read + 0 write)
+Replacement: LRU (8 meta bits)
+Miss count: 4189 (4189 read + 0 write)
+Hit count: 544730 (544730 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.763136%
 
 Block size: 32
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 4189(4189 read + 0 write)
-Hit count: 544730(544730 read + 0 write)
+Replacement: LRU (8 meta bits)
+Miss count: 4189 (4189 read + 0 write)
+Hit count: 544730 (544730 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.763136%
 
 Block size: 64
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 4189(4189 read + 0 write)
-Hit count: 544730(544730 read + 0 write)
+Replacement: LRU (8 meta bits)
+Miss count: 4189 (4189 read + 0 write)
+Hit count: 544730 (544730 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.763136%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 4196(4196 read + 0 write)
-Hit count: 544723(544723 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 4196 (4196 read + 0 write)
+Hit count: 544723 (544723 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.764412%
 
 Block size: 32
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 4196(4196 read + 0 write)
-Hit count: 544723(544723 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 4196 (4196 read + 0 write)
+Hit count: 544723 (544723 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.764412%
 
 Block size: 64
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 4196(4196 read + 0 write)
-Hit count: 544723(544723 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 4196 (4196 read + 0 write)
+Hit count: 544723 (544723 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.764412%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
 Replacement: Random
-Miss count: 4563(4563 read + 0 write)
-Hit count: 544356(544356 read + 0 write)
+Miss count: 4563 (4563 read + 0 write)
+Hit count: 544356 (544356 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.83127%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: Binary tree
-Miss count: 4215(4215 read + 0 write)
-Hit count: 544704(544704 read + 0 write)
+Replacement: Binary tree ( 7 meta bits )
+Miss count: 4215 (4215 read + 0 write)
+Hit count: 544704 (544704 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.767873%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 4196(4196 read + 0 write)
-Hit count: 544723(544723 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 4196 (4196 read + 0 write)
+Hit count: 544723 (544723 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.764412%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 4196(4196 read + 0 write)
-Hit count: 544723(544723 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 4196 (4196 read + 0 write)
+Hit count: 544723 (544723 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.764412%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 4196(4196 read + 0 write)
-Hit count: 544723(544723 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 4196 (4196 read + 0 write)
+Hit count: 544723 (544723 read + 0 write)
 Total access count: 548919
 Cache miss rate: 0.764412%
 
@@ -624,155 +692,172 @@ Cache miss rate: 0.764412%
 
 ******************  gcc.trace  ******************
 Block size: 8
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 21848(4301 read + 17547 write)
-Hit count: 493835(313896 read + 179939 write)
+Replacement: LRU (0 meta bits)
+Miss count: 21848 (4301 read + 17547 write)
+Hit count: 493835 (313896 read + 179939 write)
 Total access count: 515683
 Cache miss rate: 4.23671%
 
 Block size: 32
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 6907(2259 read + 4648 write)
-Hit count: 508776(315938 read + 192838 write)
+Replacement: LRU (0 meta bits)
+Miss count: 6907 (2259 read + 4648 write)
+Hit count: 508776 (315938 read + 192838 write)
 Total access count: 515683
 Cache miss rate: 1.33939%
 
 Block size: 64
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 4379(1877 read + 2502 write)
-Hit count: 511304(316320 read + 194984 write)
+Replacement: LRU (0 meta bits)
+Miss count: 4379 (1877 read + 2502 write)
+Hit count: 511304 (316320 read + 194984 write)
 Total access count: 515683
 Cache miss rate: 0.849165%
 
 Block size: 8
+Cache line meta: 63 bits (tag=61 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 21086(3705 read + 17381 write)
-Hit count: 494597(314492 read + 180105 write)
+Replacement: LRU (14 meta bits)
+Miss count: 21086 (3705 read + 17381 write)
+Hit count: 494597 (314492 read + 180105 write)
 Total access count: 515683
 Cache miss rate: 4.08895%
 
 Block size: 32
+Cache line meta: 61 bits (tag=59 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 6123(1580 read + 4543 write)
-Hit count: 509560(316617 read + 192943 write)
+Replacement: LRU (12 meta bits)
+Miss count: 6123 (1580 read + 4543 write)
+Hit count: 509560 (316617 read + 192943 write)
 Total access count: 515683
 Cache miss rate: 1.18736%
 
 Block size: 64
+Cache line meta: 60 bits (tag=58 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 3471(1081 read + 2390 write)
-Hit count: 512212(317116 read + 195096 write)
+Replacement: LRU (11 meta bits)
+Miss count: 3471 (1081 read + 2390 write)
+Hit count: 512212 (317116 read + 195096 write)
 Total access count: 515683
 Cache miss rate: 0.673088%
 
 Block size: 8
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 21192(3792 read + 17400 write)
-Hit count: 494491(314405 read + 180086 write)
+Replacement: LRU (8 meta bits)
+Miss count: 21192 (3792 read + 17400 write)
+Hit count: 494491 (314405 read + 180086 write)
 Total access count: 515683
 Cache miss rate: 4.1095%
 
 Block size: 32
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 6177(1626 read + 4551 write)
-Hit count: 509506(316571 read + 192935 write)
+Replacement: LRU (8 meta bits)
+Miss count: 6177 (1626 read + 4551 write)
+Hit count: 509506 (316571 read + 192935 write)
 Total access count: 515683
 Cache miss rate: 1.19783%
 
 Block size: 64
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 3496(1100 read + 2396 write)
-Hit count: 512187(317097 read + 195090 write)
+Replacement: LRU (8 meta bits)
+Miss count: 3496 (1100 read + 2396 write)
+Hit count: 512187 (317097 read + 195090 write)
 Total access count: 515683
 Cache miss rate: 0.677936%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 21132(3742 read + 17390 write)
-Hit count: 494551(314455 read + 180096 write)
+Replacement: LRU (24 meta bits)
+Miss count: 21132 (3742 read + 17390 write)
+Hit count: 494551 (314455 read + 180096 write)
 Total access count: 515683
 Cache miss rate: 4.09787%
 
 Block size: 32
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 6149(1602 read + 4547 write)
-Hit count: 509534(316595 read + 192939 write)
+Replacement: LRU (24 meta bits)
+Miss count: 6149 (1602 read + 4547 write)
+Hit count: 509534 (316595 read + 192939 write)
 Total access count: 515683
 Cache miss rate: 1.1924%
 
 Block size: 64
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 3483(1089 read + 2394 write)
-Hit count: 512200(317108 read + 195092 write)
+Replacement: LRU (24 meta bits)
+Miss count: 3483 (1089 read + 2394 write)
+Hit count: 512200 (317108 read + 195092 write)
 Total access count: 515683
 Cache miss rate: 0.675415%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
 Replacement: Random
-Miss count: 21222(3779 read + 17443 write)
-Hit count: 494461(314418 read + 180043 write)
+Miss count: 21222 (3779 read + 17443 write)
+Hit count: 494461 (314418 read + 180043 write)
 Total access count: 515683
 Cache miss rate: 4.11532%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: Binary tree
-Miss count: 21092(3710 read + 17382 write)
-Hit count: 494591(314487 read + 180104 write)
+Replacement: Binary tree ( 7 meta bits )
+Miss count: 21092 (3710 read + 17382 write)
+Hit count: 494591 (314487 read + 180104 write)
 Total access count: 515683
 Cache miss rate: 4.09011%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 44685(8501 read + 36184 write)
-Hit count: 470998(309696 read + 161302 write)
+Replacement: LRU (24 meta bits)
+Miss count: 44685 (8501 read + 36184 write)
+Hit count: 470998 (309696 read + 161302 write)
 Total access count: 515683
 Cache miss rate: 8.66521%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 21132(3742 read + 17390 write)
-Hit count: 494551(314455 read + 180096 write)
+Replacement: LRU (24 meta bits)
+Miss count: 21132 (3742 read + 17390 write)
+Hit count: 494551 (314455 read + 180096 write)
 Total access count: 515683
 Cache miss rate: 4.09787%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 44685(8501 read + 36184 write)
-Hit count: 470998(309696 read + 161302 write)
+Replacement: LRU (24 meta bits)
+Miss count: 44685 (8501 read + 36184 write)
+Hit count: 470998 (309696 read + 161302 write)
 Total access count: 515683
 Cache miss rate: 8.66521%
 
@@ -780,155 +865,172 @@ Cache miss rate: 8.66521%
 
 ******************  mcf.trace  ******************
 Block size: 8
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 25104(5249 read + 19855 write)
-Hit count: 482596(274933 read + 207663 write)
+Replacement: LRU (0 meta bits)
+Miss count: 25104 (5249 read + 19855 write)
+Hit count: 482596 (274933 read + 207663 write)
 Total access count: 507700
 Cache miss rate: 4.94465%
 
 Block size: 32
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 11153(2481 read + 8672 write)
-Hit count: 496547(277701 read + 218846 write)
+Replacement: LRU (0 meta bits)
+Miss count: 11153 (2481 read + 8672 write)
+Hit count: 496547 (277701 read + 218846 write)
 Total access count: 507700
 Cache miss rate: 2.19677%
 
 Block size: 64
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 7410(1742 read + 5668 write)
-Hit count: 500290(278440 read + 221850 write)
+Replacement: LRU (0 meta bits)
+Miss count: 7410 (1742 read + 5668 write)
+Hit count: 500290 (278440 read + 221850 write)
 Total access count: 507700
 Cache miss rate: 1.45952%
 
 Block size: 8
+Cache line meta: 63 bits (tag=61 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 23232(4347 read + 18885 write)
-Hit count: 484468(275835 read + 208633 write)
+Replacement: LRU (14 meta bits)
+Miss count: 23232 (4347 read + 18885 write)
+Hit count: 484468 (275835 read + 208633 write)
 Total access count: 507700
 Cache miss rate: 4.57593%
 
 Block size: 32
+Cache line meta: 61 bits (tag=59 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 9263(1542 read + 7721 write)
-Hit count: 498437(278640 read + 219797 write)
+Replacement: LRU (12 meta bits)
+Miss count: 9263 (1542 read + 7721 write)
+Hit count: 498437 (278640 read + 219797 write)
 Total access count: 507700
 Cache miss rate: 1.8245%
 
 Block size: 64
+Cache line meta: 60 bits (tag=58 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 5502(787 read + 4715 write)
-Hit count: 502198(279395 read + 222803 write)
+Replacement: LRU (11 meta bits)
+Miss count: 5502 (787 read + 4715 write)
+Hit count: 502198 (279395 read + 222803 write)
 Total access count: 507700
 Cache miss rate: 1.08371%
 
 Block size: 8
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 23232(4347 read + 18885 write)
-Hit count: 484468(275835 read + 208633 write)
+Replacement: LRU (8 meta bits)
+Miss count: 23232 (4347 read + 18885 write)
+Hit count: 484468 (275835 read + 208633 write)
 Total access count: 507700
 Cache miss rate: 4.57593%
 
 Block size: 32
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 9263(1542 read + 7721 write)
-Hit count: 498437(278640 read + 219797 write)
+Replacement: LRU (8 meta bits)
+Miss count: 9263 (1542 read + 7721 write)
+Hit count: 498437 (278640 read + 219797 write)
 Total access count: 507700
 Cache miss rate: 1.8245%
 
 Block size: 64
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 5502(787 read + 4715 write)
-Hit count: 502198(279395 read + 222803 write)
+Replacement: LRU (8 meta bits)
+Miss count: 5502 (787 read + 4715 write)
+Hit count: 502198 (279395 read + 222803 write)
 Total access count: 507700
 Cache miss rate: 1.08371%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 23232(4347 read + 18885 write)
-Hit count: 484468(275835 read + 208633 write)
+Replacement: LRU (24 meta bits)
+Miss count: 23232 (4347 read + 18885 write)
+Hit count: 484468 (275835 read + 208633 write)
 Total access count: 507700
 Cache miss rate: 4.57593%
 
 Block size: 32
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 9263(1542 read + 7721 write)
-Hit count: 498437(278640 read + 219797 write)
+Replacement: LRU (24 meta bits)
+Miss count: 9263 (1542 read + 7721 write)
+Hit count: 498437 (278640 read + 219797 write)
 Total access count: 507700
 Cache miss rate: 1.8245%
 
 Block size: 64
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 5502(787 read + 4715 write)
-Hit count: 502198(279395 read + 222803 write)
+Replacement: LRU (24 meta bits)
+Miss count: 5502 (787 read + 4715 write)
+Hit count: 502198 (279395 read + 222803 write)
 Total access count: 507700
 Cache miss rate: 1.08371%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
 Replacement: Random
-Miss count: 23317(4368 read + 18949 write)
-Hit count: 484383(275814 read + 208569 write)
+Miss count: 23317 (4368 read + 18949 write)
+Hit count: 484383 (275814 read + 208569 write)
 Total access count: 507700
 Cache miss rate: 4.59267%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: Binary tree
-Miss count: 23232(4347 read + 18885 write)
-Hit count: 484468(275835 read + 208633 write)
+Replacement: Binary tree ( 7 meta bits )
+Miss count: 23232 (4347 read + 18885 write)
+Hit count: 484468 (275835 read + 208633 write)
 Total access count: 507700
 Cache miss rate: 4.57593%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 56593(4390 read + 52203 write)
-Hit count: 451107(275792 read + 175315 write)
+Replacement: LRU (24 meta bits)
+Miss count: 56593 (4390 read + 52203 write)
+Hit count: 451107 (275792 read + 175315 write)
 Total access count: 507700
 Cache miss rate: 11.1469%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 23232(4347 read + 18885 write)
-Hit count: 484468(275835 read + 208633 write)
+Replacement: LRU (24 meta bits)
+Miss count: 23232 (4347 read + 18885 write)
+Hit count: 484468 (275835 read + 208633 write)
 Total access count: 507700
 Cache miss rate: 4.57593%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 56593(4390 read + 52203 write)
-Hit count: 451107(275792 read + 175315 write)
+Replacement: LRU (24 meta bits)
+Miss count: 56593 (4390 read + 52203 write)
+Hit count: 451107 (275792 read + 175315 write)
 Total access count: 507700
 Cache miss rate: 11.1469%
 
@@ -936,155 +1038,172 @@ Cache miss rate: 11.1469%
 
 ******************  perlbench.trace  ******************
 Block size: 8
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 18607(11408 read + 7199 write)
-Hit count: 488834(290644 read + 198190 write)
+Replacement: LRU (0 meta bits)
+Miss count: 18607 (11408 read + 7199 write)
+Hit count: 488834 (290644 read + 198190 write)
 Total access count: 507441
 Cache miss rate: 3.66683%
 
 Block size: 32
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 11741(8289 read + 3452 write)
-Hit count: 495700(293763 read + 201937 write)
+Replacement: LRU (0 meta bits)
+Miss count: 11741 (8289 read + 3452 write)
+Hit count: 495700 (293763 read + 201937 write)
 Total access count: 507441
 Cache miss rate: 2.31377%
 
 Block size: 64
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 9611(7247 read + 2364 write)
-Hit count: 497830(294805 read + 203025 write)
+Replacement: LRU (0 meta bits)
+Miss count: 9611 (7247 read + 2364 write)
+Hit count: 497830 (294805 read + 203025 write)
 Total access count: 507441
 Cache miss rate: 1.89401%
 
 Block size: 8
+Cache line meta: 63 bits (tag=61 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 8901(4931 read + 3970 write)
-Hit count: 498540(297121 read + 201419 write)
+Replacement: LRU (14 meta bits)
+Miss count: 8901 (4931 read + 3970 write)
+Hit count: 498540 (297121 read + 201419 write)
 Total access count: 507441
 Cache miss rate: 1.7541%
 
 Block size: 32
+Cache line meta: 61 bits (tag=59 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 3350(2207 read + 1143 write)
-Hit count: 504091(299845 read + 204246 write)
+Replacement: LRU (12 meta bits)
+Miss count: 3350 (2207 read + 1143 write)
+Hit count: 504091 (299845 read + 204246 write)
 Total access count: 507441
 Cache miss rate: 0.660175%
 
 Block size: 64
+Cache line meta: 60 bits (tag=58 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 1966(1386 read + 580 write)
-Hit count: 505475(300666 read + 204809 write)
+Replacement: LRU (11 meta bits)
+Miss count: 1966 (1386 read + 580 write)
+Hit count: 505475 (300666 read + 204809 write)
 Total access count: 507441
 Cache miss rate: 0.387434%
 
 Block size: 8
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 10510(5708 read + 4802 write)
-Hit count: 496931(296344 read + 200587 write)
+Replacement: LRU (8 meta bits)
+Miss count: 10510 (5708 read + 4802 write)
+Hit count: 496931 (296344 read + 200587 write)
 Total access count: 507441
 Cache miss rate: 2.07118%
 
 Block size: 32
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 5763(3634 read + 2129 write)
-Hit count: 501678(298418 read + 203260 write)
+Replacement: LRU (8 meta bits)
+Miss count: 5763 (3634 read + 2129 write)
+Hit count: 501678 (298418 read + 203260 write)
 Total access count: 507441
 Cache miss rate: 1.1357%
 
 Block size: 64
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 4329(2945 read + 1384 write)
-Hit count: 503112(299107 read + 204005 write)
+Replacement: LRU (8 meta bits)
+Miss count: 4329 (2945 read + 1384 write)
+Hit count: 503112 (299107 read + 204005 write)
 Total access count: 507441
 Cache miss rate: 0.853104%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 9084(5004 read + 4080 write)
-Hit count: 498357(297048 read + 201309 write)
+Replacement: LRU (24 meta bits)
+Miss count: 9084 (5004 read + 4080 write)
+Hit count: 498357 (297048 read + 201309 write)
 Total access count: 507441
 Cache miss rate: 1.79016%
 
 Block size: 32
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 4172(2640 read + 1532 write)
-Hit count: 503269(299412 read + 203857 write)
+Replacement: LRU (24 meta bits)
+Miss count: 4172 (2640 read + 1532 write)
+Hit count: 503269 (299412 read + 203857 write)
 Total access count: 507441
 Cache miss rate: 0.822165%
 
 Block size: 64
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 3169(2161 read + 1008 write)
-Hit count: 504272(299891 read + 204381 write)
+Replacement: LRU (24 meta bits)
+Miss count: 3169 (2161 read + 1008 write)
+Hit count: 504272 (299891 read + 204381 write)
 Total access count: 507441
 Cache miss rate: 0.624506%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
 Replacement: Random
-Miss count: 9140(5042 read + 4098 write)
-Hit count: 498301(297010 read + 201291 write)
+Miss count: 9140 (5042 read + 4098 write)
+Hit count: 498301 (297010 read + 201291 write)
 Total access count: 507441
 Cache miss rate: 1.80119%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: Binary tree
-Miss count: 9049(4987 read + 4062 write)
-Hit count: 498392(297065 read + 201327 write)
+Replacement: Binary tree ( 7 meta bits )
+Miss count: 9049 (4987 read + 4062 write)
+Hit count: 498392 (297065 read + 201327 write)
 Total access count: 507441
 Cache miss rate: 1.78326%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 23664(7160 read + 16504 write)
-Hit count: 483777(294892 read + 188885 write)
+Replacement: LRU (24 meta bits)
+Miss count: 23664 (7160 read + 16504 write)
+Hit count: 483777 (294892 read + 188885 write)
 Total access count: 507441
 Cache miss rate: 4.6634%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 9084(5004 read + 4080 write)
-Hit count: 498357(297048 read + 201309 write)
+Replacement: LRU (24 meta bits)
+Miss count: 9084 (5004 read + 4080 write)
+Hit count: 498357 (297048 read + 201309 write)
 Total access count: 507441
 Cache miss rate: 1.79016%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 23664(7160 read + 16504 write)
-Hit count: 483777(294892 read + 188885 write)
+Replacement: LRU (24 meta bits)
+Miss count: 23664 (7160 read + 16504 write)
+Hit count: 483777 (294892 read + 188885 write)
 Total access count: 507441
 Cache miss rate: 4.6634%
 
@@ -1092,155 +1211,172 @@ Cache miss rate: 4.6634%
 
 ******************  streamcluster.trace  ******************
 Block size: 8
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 42819(42819 read + 0 write)
-Hit count: 943341(943341 read + 0 write)
+Replacement: LRU (0 meta bits)
+Miss count: 42819 (42819 read + 0 write)
+Hit count: 943341 (943341 read + 0 write)
 Total access count: 986160
 Cache miss rate: 4.34199%
 
 Block size: 32
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 42819(42819 read + 0 write)
-Hit count: 943341(943341 read + 0 write)
+Replacement: LRU (0 meta bits)
+Miss count: 42819 (42819 read + 0 write)
+Hit count: 943341 (943341 read + 0 write)
 Total access count: 986160
 Cache miss rate: 4.34199%
 
 Block size: 64
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 42819(42819 read + 0 write)
-Hit count: 943341(943341 read + 0 write)
+Replacement: LRU (0 meta bits)
+Miss count: 42819 (42819 read + 0 write)
+Hit count: 943341 (943341 read + 0 write)
 Total access count: 986160
 Cache miss rate: 4.34199%
 
 Block size: 8
+Cache line meta: 63 bits (tag=61 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 8398(8398 read + 0 write)
-Hit count: 977762(977762 read + 0 write)
+Replacement: LRU (14 meta bits)
+Miss count: 8398 (8398 read + 0 write)
+Hit count: 977762 (977762 read + 0 write)
 Total access count: 986160
 Cache miss rate: 0.851586%
 
 Block size: 32
+Cache line meta: 61 bits (tag=59 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 12655(12655 read + 0 write)
-Hit count: 973505(973505 read + 0 write)
+Replacement: LRU (12 meta bits)
+Miss count: 12655 (12655 read + 0 write)
+Hit count: 973505 (973505 read + 0 write)
 Total access count: 986160
 Cache miss rate: 1.28326%
 
 Block size: 64
+Cache line meta: 60 bits (tag=58 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 20248(20248 read + 0 write)
-Hit count: 965912(965912 read + 0 write)
+Replacement: LRU (11 meta bits)
+Miss count: 20248 (20248 read + 0 write)
+Hit count: 965912 (965912 read + 0 write)
 Total access count: 986160
 Cache miss rate: 2.05322%
 
 Block size: 8
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 26105(26105 read + 0 write)
-Hit count: 960055(960055 read + 0 write)
+Replacement: LRU (8 meta bits)
+Miss count: 26105 (26105 read + 0 write)
+Hit count: 960055 (960055 read + 0 write)
 Total access count: 986160
 Cache miss rate: 2.64714%
 
 Block size: 32
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 26105(26105 read + 0 write)
-Hit count: 960055(960055 read + 0 write)
+Replacement: LRU (8 meta bits)
+Miss count: 26105 (26105 read + 0 write)
+Hit count: 960055 (960055 read + 0 write)
 Total access count: 986160
 Cache miss rate: 2.64714%
 
 Block size: 64
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 26105(26105 read + 0 write)
-Hit count: 960055(960055 read + 0 write)
+Replacement: LRU (8 meta bits)
+Miss count: 26105 (26105 read + 0 write)
+Hit count: 960055 (960055 read + 0 write)
 Total access count: 986160
 Cache miss rate: 2.64714%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 23490(23490 read + 0 write)
-Hit count: 962670(962670 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 23490 (23490 read + 0 write)
+Hit count: 962670 (962670 read + 0 write)
 Total access count: 986160
 Cache miss rate: 2.38197%
 
 Block size: 32
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 23490(23490 read + 0 write)
-Hit count: 962670(962670 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 23490 (23490 read + 0 write)
+Hit count: 962670 (962670 read + 0 write)
 Total access count: 986160
 Cache miss rate: 2.38197%
 
 Block size: 64
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 23490(23490 read + 0 write)
-Hit count: 962670(962670 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 23490 (23490 read + 0 write)
+Hit count: 962670 (962670 read + 0 write)
 Total access count: 986160
 Cache miss rate: 2.38197%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
 Replacement: Random
-Miss count: 29623(29623 read + 0 write)
-Hit count: 956537(956537 read + 0 write)
+Miss count: 29623 (29623 read + 0 write)
+Hit count: 956537 (956537 read + 0 write)
 Total access count: 986160
 Cache miss rate: 3.00387%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: Binary tree
-Miss count: 24409(24409 read + 0 write)
-Hit count: 961751(961751 read + 0 write)
+Replacement: Binary tree ( 7 meta bits )
+Miss count: 24409 (24409 read + 0 write)
+Hit count: 961751 (961751 read + 0 write)
 Total access count: 986160
 Cache miss rate: 2.47516%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 23490(23490 read + 0 write)
-Hit count: 962670(962670 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 23490 (23490 read + 0 write)
+Hit count: 962670 (962670 read + 0 write)
 Total access count: 986160
 Cache miss rate: 2.38197%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 23490(23490 read + 0 write)
-Hit count: 962670(962670 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 23490 (23490 read + 0 write)
+Hit count: 962670 (962670 read + 0 write)
 Total access count: 986160
 Cache miss rate: 2.38197%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 23490(23490 read + 0 write)
-Hit count: 962670(962670 read + 0 write)
+Replacement: LRU (24 meta bits)
+Miss count: 23490 (23490 read + 0 write)
+Hit count: 962670 (962670 read + 0 write)
 Total access count: 986160
 Cache miss rate: 2.38197%
 
@@ -1248,155 +1384,172 @@ Cache miss rate: 2.38197%
 
 ******************  swim.trace  ******************
 Block size: 8
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 19935(1414 read + 18521 write)
-Hit count: 283258(219254 read + 64004 write)
+Replacement: LRU (0 meta bits)
+Miss count: 19935 (1414 read + 18521 write)
+Hit count: 283258 (219254 read + 64004 write)
 Total access count: 303193
 Cache miss rate: 6.57502%
 
 Block size: 32
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 6546(702 read + 5844 write)
-Hit count: 296647(219966 read + 76681 write)
+Replacement: LRU (0 meta bits)
+Miss count: 6546 (702 read + 5844 write)
+Hit count: 296647 (219966 read + 76681 write)
 Total access count: 303193
 Cache miss rate: 2.15902%
 
 Block size: 64
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 3704(552 read + 3152 write)
-Hit count: 299489(220116 read + 79373 write)
+Replacement: LRU (0 meta bits)
+Miss count: 3704 (552 read + 3152 write)
+Hit count: 299489 (220116 read + 79373 write)
 Total access count: 303193
 Cache miss rate: 1.22166%
 
 Block size: 8
+Cache line meta: 63 bits (tag=61 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 19816(1314 read + 18502 write)
-Hit count: 283377(219354 read + 64023 write)
+Replacement: LRU (14 meta bits)
+Miss count: 19816 (1314 read + 18502 write)
+Hit count: 283377 (219354 read + 64023 write)
 Total access count: 303193
 Cache miss rate: 6.53577%
 
 Block size: 32
+Cache line meta: 61 bits (tag=59 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 6400(595 read + 5805 write)
-Hit count: 296793(220073 read + 76720 write)
+Replacement: LRU (12 meta bits)
+Miss count: 6400 (595 read + 5805 write)
+Hit count: 296793 (220073 read + 76720 write)
 Total access count: 303193
 Cache miss rate: 2.11087%
 
 Block size: 64
+Cache line meta: 60 bits (tag=58 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 3476(412 read + 3064 write)
-Hit count: 299717(220256 read + 79461 write)
+Replacement: LRU (11 meta bits)
+Miss count: 3476 (412 read + 3064 write)
+Hit count: 299717 (220256 read + 79461 write)
 Total access count: 303193
 Cache miss rate: 1.14646%
 
 Block size: 8
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 19824(1321 read + 18503 write)
-Hit count: 283369(219347 read + 64022 write)
+Replacement: LRU (8 meta bits)
+Miss count: 19824 (1321 read + 18503 write)
+Hit count: 283369 (219347 read + 64022 write)
 Total access count: 303193
 Cache miss rate: 6.53841%
 
 Block size: 32
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 6422(614 read + 5808 write)
-Hit count: 296771(220054 read + 76717 write)
+Replacement: LRU (8 meta bits)
+Miss count: 6422 (614 read + 5808 write)
+Hit count: 296771 (220054 read + 76717 write)
 Total access count: 303193
 Cache miss rate: 2.11812%
 
 Block size: 64
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 3484(418 read + 3066 write)
-Hit count: 299709(220250 read + 79459 write)
+Replacement: LRU (8 meta bits)
+Miss count: 3484 (418 read + 3066 write)
+Hit count: 299709 (220250 read + 79459 write)
 Total access count: 303193
 Cache miss rate: 1.1491%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 19819(1316 read + 18503 write)
-Hit count: 283374(219352 read + 64022 write)
+Replacement: LRU (24 meta bits)
+Miss count: 19819 (1316 read + 18503 write)
+Hit count: 283374 (219352 read + 64022 write)
 Total access count: 303193
 Cache miss rate: 6.53676%
 
 Block size: 32
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 6417(609 read + 5808 write)
-Hit count: 296776(220059 read + 76717 write)
+Replacement: LRU (24 meta bits)
+Miss count: 6417 (609 read + 5808 write)
+Hit count: 296776 (220059 read + 76717 write)
 Total access count: 303193
 Cache miss rate: 2.11647%
 
 Block size: 64
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 3476(411 read + 3065 write)
-Hit count: 299717(220257 read + 79460 write)
+Replacement: LRU (24 meta bits)
+Miss count: 3476 (411 read + 3065 write)
+Hit count: 299717 (220257 read + 79460 write)
 Total access count: 303193
 Cache miss rate: 1.14646%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
 Replacement: Random
-Miss count: 19923(1415 read + 18508 write)
-Hit count: 283270(219253 read + 64017 write)
+Miss count: 19923 (1415 read + 18508 write)
+Hit count: 283270 (219253 read + 64017 write)
 Total access count: 303193
 Cache miss rate: 6.57106%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: Binary tree
-Miss count: 19817(1315 read + 18502 write)
-Hit count: 283376(219353 read + 64023 write)
+Replacement: Binary tree ( 7 meta bits )
+Miss count: 19817 (1315 read + 18502 write)
+Hit count: 283376 (219353 read + 64023 write)
 Total access count: 303193
 Cache miss rate: 6.5361%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 29138(3216 read + 25922 write)
-Hit count: 274055(217452 read + 56603 write)
+Replacement: LRU (24 meta bits)
+Miss count: 29138 (3216 read + 25922 write)
+Hit count: 274055 (217452 read + 56603 write)
 Total access count: 303193
 Cache miss rate: 9.61038%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 19819(1316 read + 18503 write)
-Hit count: 283374(219352 read + 64022 write)
+Replacement: LRU (24 meta bits)
+Miss count: 19819 (1316 read + 18503 write)
+Hit count: 283374 (219352 read + 64022 write)
 Total access count: 303193
 Cache miss rate: 6.53676%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 29138(3216 read + 25922 write)
-Hit count: 274055(217452 read + 56603 write)
+Replacement: LRU (24 meta bits)
+Miss count: 29138 (3216 read + 25922 write)
+Hit count: 274055 (217452 read + 56603 write)
 Total access count: 303193
 Cache miss rate: 9.61038%
 
@@ -1404,155 +1557,172 @@ Cache miss rate: 9.61038%
 
 ******************  twolf.trace  ******************
 Block size: 8
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 5720(1222 read + 4498 write)
-Hit count: 477104(350181 read + 126923 write)
+Replacement: LRU (0 meta bits)
+Miss count: 5720 (1222 read + 4498 write)
+Hit count: 477104 (350181 read + 126923 write)
 Total access count: 482824
 Cache miss rate: 1.1847%
 
 Block size: 32
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 1872(659 read + 1213 write)
-Hit count: 480952(350744 read + 130208 write)
+Replacement: LRU (0 meta bits)
+Miss count: 1872 (659 read + 1213 write)
+Hit count: 480952 (350744 read + 130208 write)
 Total access count: 482824
 Cache miss rate: 0.387719%
 
 Block size: 64
+Cache line meta: 49 bits (tag=47 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: direct
-Replacement: LRU
-Miss count: 1310(661 read + 649 write)
-Hit count: 481514(350742 read + 130772 write)
+Replacement: LRU (0 meta bits)
+Miss count: 1310 (661 read + 649 write)
+Hit count: 481514 (350742 read + 130772 write)
 Total access count: 482824
 Cache miss rate: 0.27132%
 
 Block size: 8
+Cache line meta: 63 bits (tag=61 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 5505(1034 read + 4471 write)
-Hit count: 477319(350369 read + 126950 write)
+Replacement: LRU (14 meta bits)
+Miss count: 5505 (1034 read + 4471 write)
+Hit count: 477319 (350369 read + 126950 write)
 Total access count: 482824
 Cache miss rate: 1.14017%
 
 Block size: 32
+Cache line meta: 61 bits (tag=59 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 1642(457 read + 1185 write)
-Hit count: 481182(350946 read + 130236 write)
+Replacement: LRU (12 meta bits)
+Miss count: 1642 (457 read + 1185 write)
+Hit count: 481182 (350946 read + 130236 write)
 Total access count: 482824
 Cache miss rate: 0.340083%
 
 Block size: 64
+Cache line meta: 60 bits (tag=58 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: Fully-connected
-Replacement: LRU
-Miss count: 953(332 read + 621 write)
-Hit count: 481871(351071 read + 130800 write)
+Replacement: LRU (11 meta bits)
+Miss count: 953 (332 read + 621 write)
+Hit count: 481871 (351071 read + 130800 write)
 Total access count: 482824
 Cache miss rate: 0.19738%
 
 Block size: 8
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 5506(1035 read + 4471 write)
-Hit count: 477318(350368 read + 126950 write)
+Replacement: LRU (8 meta bits)
+Miss count: 5506 (1035 read + 4471 write)
+Hit count: 477318 (350368 read + 126950 write)
 Total access count: 482824
 Cache miss rate: 1.14037%
 
 Block size: 32
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 1646(461 read + 1185 write)
-Hit count: 481178(350942 read + 130236 write)
+Replacement: LRU (8 meta bits)
+Miss count: 1646 (461 read + 1185 write)
+Hit count: 481178 (350942 read + 130236 write)
 Total access count: 482824
 Cache miss rate: 0.340911%
 
 Block size: 64
+Cache line meta: 51 bits (tag=49 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 4-way
-Replacement: LRU
-Miss count: 958(337 read + 621 write)
-Hit count: 481866(351066 read + 130800 write)
+Replacement: LRU (8 meta bits)
+Miss count: 958 (337 read + 621 write)
+Hit count: 481866 (351066 read + 130800 write)
 Total access count: 482824
 Cache miss rate: 0.198416%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 5505(1034 read + 4471 write)
-Hit count: 477319(350369 read + 126950 write)
+Replacement: LRU (24 meta bits)
+Miss count: 5505 (1034 read + 4471 write)
+Hit count: 477319 (350369 read + 126950 write)
 Total access count: 482824
 Cache miss rate: 1.14017%
 
 Block size: 32
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 1642(457 read + 1185 write)
-Hit count: 481182(350946 read + 130236 write)
+Replacement: LRU (24 meta bits)
+Miss count: 1642 (457 read + 1185 write)
+Hit count: 481182 (350946 read + 130236 write)
 Total access count: 482824
 Cache miss rate: 0.340083%
 
 Block size: 64
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 954(333 read + 621 write)
-Hit count: 481870(351070 read + 130800 write)
+Replacement: LRU (24 meta bits)
+Miss count: 954 (333 read + 621 write)
+Hit count: 481870 (351070 read + 130800 write)
 Total access count: 482824
 Cache miss rate: 0.197588%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
 Replacement: Random
-Miss count: 5505(1034 read + 4471 write)
-Hit count: 477319(350369 read + 126950 write)
+Miss count: 5505 (1034 read + 4471 write)
+Hit count: 477319 (350369 read + 126950 write)
 Total access count: 482824
 Cache miss rate: 1.14017%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-allocate
 Associative: 8-way
-Replacement: Binary tree
-Miss count: 5505(1034 read + 4471 write)
-Hit count: 477319(350369 read + 126950 write)
+Replacement: Binary tree ( 7 meta bits )
+Miss count: 5505 (1034 read + 4471 write)
+Hit count: 477319 (350369 read + 126950 write)
 Total access count: 482824
 Cache miss rate: 1.14017%
 
 Block size: 8
+Cache line meta: 52 bits (tag=50 valid=1 dirty=1)
 Write policy: write-back + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 7005(1639 read + 5366 write)
-Hit count: 475819(349764 read + 126055 write)
+Replacement: LRU (24 meta bits)
+Miss count: 7005 (1639 read + 5366 write)
+Hit count: 475819 (349764 read + 126055 write)
 Total access count: 482824
 Cache miss rate: 1.45084%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 5505(1034 read + 4471 write)
-Hit count: 477319(350369 read + 126950 write)
+Replacement: LRU (24 meta bits)
+Miss count: 5505 (1034 read + 4471 write)
+Hit count: 477319 (350369 read + 126950 write)
 Total access count: 482824
 Cache miss rate: 1.14017%
 
 Block size: 8
+Cache line meta: 51 bits (tag=50 valid=1 dirty=0)
 Write policy: write-through + write-no-allocate
 Associative: 8-way
-Replacement: LRU
-Miss count: 7005(1639 read + 5366 write)
-Hit count: 475819(349764 read + 126055 write)
+Replacement: LRU (24 meta bits)
+Miss count: 7005 (1639 read + 5366 write)
+Hit count: 475819 (349764 read + 126055 write)
 Total access count: 482824
 Cache miss rate: 1.45084%
 

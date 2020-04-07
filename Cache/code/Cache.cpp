@@ -5,23 +5,26 @@
 #include "Cache.hpp"
 #include <cstdlib>
 #include <cstring>
+#include <iostream>
 
 void lruStack::init(Option &opt) {
     p_option = &opt;
     if (opt.associative == way4) {
         // log2(4) * 4 = 8  --> one byte
         opt.lru_frame_bits_count = 2;
+        bits_ = 8;
         data_ = new char[1]();
         bytes = 1;
         stackFrameMask = 0x3;  // 0000 0011
     } else if (opt.associative == way8) {
         // log2(8) * 8 = 24 --> three bytes
         opt.lru_frame_bits_count = 3;
+        bits_ = 24;
         data_ = new char[3]();
         bytes = 3;
         stackFrameMask = 0x7;  // 0000 0111
     } else if (opt.associative == full) {
-        int bits = log2_(opt.block_count);
+        bits_ = log2_(opt.block_count);
         // no-align-impl
 
 //        opt.lru_frame_bits_count = bits;
@@ -37,14 +40,17 @@ void lruStack::init(Option &opt) {
         opt.lru_frame_bits_count = 16;
         bytes = 2 * opt.block_count; // 2 bytes every block
         data_ = new char[bytes]();
+    } else {
+        // direct
+        bits_ = 0;
     }
 }
 
+//  local_block_id ranged from 0 to n_blocks - 1
 void lruStack::makeTop(size_t local_block_id, bool hit) {
     if (p_option->associative == way4 || p_option->associative == way8) {
-        int n_blocks = p_option->block_count / p_option->group_count;
-
-        if (hit) {
+        int n_blocks = p_option->block_count / p_option->group_count;   // blocks in group
+        if (hit) {  // search from top, make top, push others down
             int i;
             for (i = 0; i < n_blocks; ++i) {
                 size_t tag = getTag(i);
@@ -52,7 +58,7 @@ void lruStack::makeTop(size_t local_block_id, bool hit) {
                     break;
                 }
             }
-            assert(i < n_blocks);
+            assert(i < n_blocks);   // if hit, the tag should be here
             for (; i > 0; i--) {
                 setTag(i, getTag(i - 1)); // push down by one
             }
@@ -64,6 +70,8 @@ void lruStack::makeTop(size_t local_block_id, bool hit) {
             setTag(0, local_block_id);   // make top
         }
     } else if (p_option->associative == full) {
+        // when fully connected, there are too many blocks,
+        // use memmove to accelerate, since every record is two bytes
         assert(p_option->group_count == 1);
         int n_blocks = p_option->block_count / p_option->group_count;
         if (hit) {
@@ -84,32 +92,19 @@ void lruStack::makeTop(size_t local_block_id, bool hit) {
         return;
     } else {
         assert(false);
-
+        // should not happen
     }
 }
 
 //get the i th element from top, each element b
 size_t lruStack::getTag(int i) {
     if (p_option->associative == way4) {
-//        size_t ret = 0;
-//        size_t bit_start_index = i * p_option->lru_frame_bits_count;
-//        size_t byte_start_index = bit_start_index / 8;
-//        size_t remain = bit_start_index % 8;
-//        size_t byte_count = (remain + p_option->lru_frame_bits_count) / 8;
-//        if ((remain + p_option->lru_frame_bits_count) % 8 != 0)
-//            byte_count++;
-//
-//        memcpy(&ret, data_ + byte_start_index, byte_count);
-//        ret = ret >> remain;                // lower end is trash bits
-//        ret = ret & stackFrameMask; // set higher unused to 0
-//        return ret;
         assert(i < 4);
         size_t ret = 0;
         memcpy(&ret, data_, 1);     // one bytes used
         ret = ret & (stackFrameMask << (i * 2));
         ret = ret >> (i * 2);
         assert(ret < 4);
-
         return ret;
     } else if (p_option->associative == way8) {
         assert(i < 8);
@@ -132,30 +127,6 @@ size_t lruStack::getTag(int i) {
 
 void lruStack::setTag(int i, size_t tag) {
     if (p_option->associative == way4) {
-//        size_t bit_start_index = i * p_option->lru_frame_bits_count;
-//        size_t byte_start_index = bit_start_index / 8;
-//        size_t remain = bit_start_index % 8;     // which bit to start in the first byte
-//        size_t byte_count = (remain + p_option->lru_frame_bits_count) / 8;
-//        size_t end_remain = (remain + p_option->lru_frame_bits_count) % 8; // how many bits used in the last byte
-//        if (end_remain != 0)
-//            byte_count++;
-//
-//        char first = data_[byte_start_index];
-//        char last = data_[byte_start_index + byte_count - 1];
-//
-//        tag = tag << remain;
-//        memcpy(data_ + byte_start_index, &tag, byte_count);
-//        unsigned char mask = 0;
-//        for (int ii = 0; ii < remain; ++ii) {
-//            mask = (mask << 1u) + 1;                //  like 0000 0111, if remain == 3
-//        }
-//        data_[byte_start_index] |= (first & mask);
-//
-//        mask = 0xFF;
-//        for (int ii = 0; ii < end_remain; ++ii) {
-//            mask = (mask << 1u);                    //  like 1111 1000, if end_remain == 3
-//        }
-//        data_[byte_start_index + byte_count - 1] |= (last & mask);
         assert(i < 4);
         assert(tag < 4);
         char mask = 0x3 << (i * 2);
@@ -182,12 +153,13 @@ void lruStack::setTag(int i, size_t tag) {
 
 }
 
+// called when "a" is not in cache, and should be moved in
+// use replacement policy to find out which block to evict
 void Cache::moveIn(Address a) {
     size_t tag = a.addr >> (option.offset_bit_count + option.index_bit_count);
     size_t index = (a.addr & option.index_mask) >> option.offset_bit_count;
     if (option.associative == direct) {
-//            size_t tag = a.addr >> (offset_bit_count + index_bit_count);
-//            size_t index = (a.addr & index_mask) >> offset_bit_count;
+        // no policy needed
         meta[index].setTag(tag);
         meta[index].setValid(true);
     } else {
@@ -199,6 +171,7 @@ void Cache::moveIn(Address a) {
                 meta[index * blocks_in_group + i].setTag(tag);
                 meta[index * blocks_in_group + i].setValid(true);
                 if (option.replacement == binaryTree) {
+                    // update binary tree meta
                     binaryTrees_[index].access(i);
                 } else if (option.replacement == randomReplace) {
                     // no need to update meta
@@ -217,7 +190,7 @@ void Cache::moveIn(Address a) {
             meta[index * blocks_in_group + block_id_to_evict].setDirty(false);
             binaryTrees_[index].access(block_id_to_evict);
         } else if (option.replacement == randomReplace) {
-            int id = std::rand() % blocks_in_group;
+            int id = std::rand() % blocks_in_group; // random block in the group
             meta[index * blocks_in_group + id].setTag(tag);
             meta[index * blocks_in_group + id].setValid(true);
             meta[index * blocks_in_group + id].setDirty(false);
@@ -257,7 +230,6 @@ bool Cache::cached(Address a, size_t &line_id) {
             return false;
         }
     } else if (option.associative == way4) {
-
         for (size_t i = 0; i < 4; i++) {
             if (meta[index * 4 + i].getValid() && meta[index * 4 + i].getTag() == tag) {
                 line_id = index * 4 + i;
@@ -266,7 +238,6 @@ bool Cache::cached(Address a, size_t &line_id) {
         }
         return false;
     } else { // option.associative == way8;
-
         for (size_t i = 0; i < 8; i++) {
             if (meta[index * 8 + i].getValid() && meta[index * 8 + i].getTag() == tag) {
                 line_id = index * 8 + i;
@@ -299,49 +270,53 @@ void Cache::updateMeta(Address a, size_t line_id, bool hit) {
     }
 }
 
-void Cache::report() {
-    std::cout << "Block size: " << option.blockSize << std::endl;
-    std::cout << "Write policy: " << (option.writeBack ? "write-back" : "write-through") << " + ";
-    std::cout << (option.allocate ? "write-allocate" : "write-no-allocate") << std::endl;
-    std::cout << "Associative: ";
+void Cache::report(std::ostream &out) {
+    out << "Block size: " << option.blockSize << std::endl;
+    out << "Cache line meta: " << meta[0].bits_ << " bits"<<" ("<<"tag="<<option.tag_bit_count<<" valid="<<option.valid_bit_count<<" dirty="<<option.dirty_bit_count<<")" << std::endl;
+    out << "Write policy: " << (option.writeBack ? "write-back" : "write-through") << " + ";
+    out << (option.allocate ? "write-allocate" : "write-no-allocate") << std::endl;
+    out << "Associative: ";
     if (option.associative == full) {
-        std::cout << "Fully-connected" << std::endl;
+        out << "Fully-connected" << std::endl;
     } else if (option.associative == direct) {
-        std::cout << "direct" << std::endl;
+        out << "direct" << std::endl;
     } else if (option.associative == way4) {
-        std::cout << "4-way" << std::endl;
+        out << "4-way" << std::endl;
     } else if (option.associative == way8) {
-        std::cout << "8-way" << std::endl;
+        out << "8-way" << std::endl;
     }
-    std::cout << "Replacement: ";
+    out << "Replacement: ";
     if (option.replacement == lru) {
-        std::cout << "LRU" << std::endl;
+        out << "LRU" << " (" << lru_[0].bits_ << " meta bits)" << std::endl;
     } else if (option.replacement == binaryTree) {
-        std::cout << "Binary tree" << std::endl;
+        out << "Binary tree" << " ( " << binaryTrees_[0].bits_ << " meta bits )" << std::endl;
     } else if (option.replacement == randomReplace) {
-        std::cout << "Random" << std::endl;
+        out << "Random" << std::endl;
     }
-    std::cout << "Miss count: " << option.miss_count
-              << "(" << option.read_miss_count << " read + " << option.write_miss_count << " write)" << std::endl;
-    std::cout << "Hit count: " << option.hit_count << "(" << option.read_hit_count << " read + "
-              << option.write_hit_count << " write)"
-              << std::endl;
-    assert(operations.size()==option.hit_count+option.miss_count);
-    assert(option.hit_count==option.read_hit_count+option.write_hit_count);
-    assert(option.miss_count==option.read_miss_count+option.write_miss_count);
+    out << "Miss count: " << option.miss_count
+        << " (" << option.read_miss_count << " read + " << option.write_miss_count << " write)" << std::endl;
+    out << "Hit count: " << option.hit_count << " (" << option.read_hit_count << " read + "
+        << option.write_hit_count << " write)"
+        << std::endl;
+    assert(operations.size() == option.hit_count + option.miss_count);
+    assert(option.hit_count == option.read_hit_count + option.write_hit_count);
+    assert(option.miss_count == option.read_miss_count + option.write_miss_count);
 
-    std::cout << "Total access count: " << operations.size() << std::endl;
-    std::cout << "Cache miss rate: "
-              << 100.0 * double(option.miss_count) / double(option.miss_count + option.hit_count) << "%"
-              << std::endl;
+    out << "Total access count: " << operations.size() << std::endl;
+    out << "Cache miss rate: "
+        << 100.0 * double(option.miss_count) / double(option.miss_count + option.hit_count) << "%"
+        << std::endl;
 }
 
-void Cache::run() {
+void Cache::run(bool log, std::ostream &out) {
     for (size_t i = 0; i < operations.size(); ++i) {
         auto &o = operations[i];
         size_t line_id;
         bool inCache = cached(o.address, line_id);
-        log_hit(o.read, inCache);
+        log_hit(o.read, inCache);   // log counts
+        if (log) {
+            out << (inCache ? "Hit" : "Miss") << std::endl;
+        }
         if (!inCache) {
             if (o.read || (!o.read && option.allocate)) {
                 moveIn(o.address);
@@ -424,9 +399,12 @@ void BinaryTree::init(Option &opt) {
 //        bytes = (bits_+1)/ 8;
 //        data_ = new char[bytes]();
         assert(false);
+    } else {
+
     }
 }
 
+// update meta
 void BinaryTree::access(size_t local_block_id) {
     if (p_option->associative == way4) {
         assert(local_block_id < 4);

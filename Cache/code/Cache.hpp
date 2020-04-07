@@ -6,7 +6,7 @@
 #include <vector>
 #include <cstdlib>
 #include <cassert>
-
+#include <ostream>
 // wrapper class for an address
 struct Address {
     size_t addr;
@@ -86,7 +86,7 @@ inline int log2_(size_t n) {
 struct lruStack {
     char *data_ = nullptr;
     int bytes;
-    int bits_;
+    int bits_ = 0;
     size_t stackFrameMask = 0;
     Option *p_option;
 
@@ -123,7 +123,7 @@ struct BinaryTree {
     };
     char *data_ = nullptr;  // at most one char is used, but keep it an array for future use
     //    int bytes;    // since only 4-way and 8-way is used, bytes is always 1, so this is not used
-    int bits_;      // bits used
+    int bits_ = 0;      // bits used
     Option *p_option;
 
     BinaryTree() {}
@@ -208,7 +208,7 @@ struct CacheLineMeta {
             value = value << 1u;
         }
         memcpy(data_, &value, bytes);   // not all bits of value are used
-        if (hasDirty_) setDirty(d);    //restore dirty and valid bits
+        if (hasDirty_) setDirty(d);    // restore dirty and valid bits
         setValid(v);
         return t;
     }
@@ -236,9 +236,9 @@ struct CacheLineMeta {
     }
 
     // set the valid bit, return the old valid bit
-    bool setValid(bool value) {
+    bool setValid(bool on) {
         bool old = getValid();
-        if (value == true)
+        if (on)
             data_[0] |= 0x1; // 0000 0001
         else
             data_[0] &= 0xFE; // 1111 1110
@@ -288,7 +288,7 @@ public:
         delete[] lru_;
     }
 
-    void run();
+    void run(bool log = false, std::ostream& out = std::cout);
 
     bool cached(Address a, size_t &line_id);
 
@@ -296,7 +296,7 @@ public:
 
     void updateMeta(Address a, size_t line_id, bool hit);
 
-    void report();
+    void report(std::ostream & out);
 };
 
 #endif // CACHE_HPP

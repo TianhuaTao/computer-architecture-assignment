@@ -5,6 +5,7 @@
 #include <vector>
 #include <iomanip>
 #include "Cache.hpp"
+#include <fstream>
 
 std::string filenames[] = {
 //        "test.trace",
@@ -80,8 +81,17 @@ int main(int argc, char *argv[]) {
         }
         for (Option &opt: options) {
             Cache cache(ops, opt);
-            cache.run();
-            cache.report();
+            if (opt.blockSize == 8 &&
+                opt.associative == way8 &&
+                opt.replacement == lru &&
+                opt.writeBack == true &&
+                opt.allocate == true) {
+                std::ofstream fout(filename + ".log");
+                cache.run(true, fout);
+            } else {
+                cache.run();
+            }
+            cache.report(std::cout);
             std::cout << std::endl;
         }
         id++;
