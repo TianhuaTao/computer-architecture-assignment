@@ -34,27 +34,28 @@ bool has_rw[] = {
         true
 };
 Option options[] = {
-        {8,  true,  true,  direct, lru},
-        {32, true,  true,  direct, lru},
-        {64, true,  true,  direct, lru},
-        {8,  true,  true,  full,   lru},
-        {32, true,  true,  full,   lru},
-        {64, true,  true,  full,   lru},
-        {8,  true,  true,  way4,   lru},
-        {32, true,  true,  way4,   lru},
-        {64, true,  true,  way4,   lru},
-        {8,  true,  true,  way8,   lru},
-        {32, true,  true,  way8,   lru},
-        {64, true,  true,  way8,   lru},
+    // {blockSize, allocate, writeBack, associative, replacement}
+    {8, true, true, direct, lru},
+    {32, true, true, direct, lru},
+    {64, true, true, direct, lru},
+    {8, true, true, full, lru},
+    {32, true, true, full, lru},
+    {64, true, true, full, lru},
+    {8, true, true, way4, lru},
+    {32, true, true, way4, lru},
+    {64, true, true, way4, lru},
+    {8, true, true, way8, lru},
+    {32, true, true, way8, lru},
+    {64, true, true, way8, lru},
 
-//        { 8,true,  true,way8, lru},
-        {8,  true,  true,  way8,   randomReplace},
-        {8,  true,  true,  way8,   binaryTree},
+    //        { 64,true,  true,way8, lru},
+    {64, true, true, way8, randomReplace},
+    {64, true, true, way8, binaryTree},
 
-//        { 8, true,  true,way8, lru},
-        {8,  false, true,  way8,   lru},
-        {8,  true,  false, way8,   lru},
-        {8,  false, false, way8,   lru},
+        //    { 8, true,  true,way8, lru},
+    {8, false, true, way8, lru},
+    {8, true, false, way8, lru},
+    {8, false, false, way8, lru},
 };
 
 int main(int argc, char *argv[]) {
