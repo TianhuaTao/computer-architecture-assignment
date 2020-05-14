@@ -3,9 +3,30 @@
 //
 
 #include "Tomasulo.h"
+#include <algorithm>
 #include <vector>
 
-// TODO: convert long long to int
+/**
+ * @brief Tomasulo 的主方法
+ * 分为以下阶段：Write Result, Issue, Execute, RS update, Load Buffer update
+ * 其中重要的是 Write Result 要最先，这样才可以释放部件，并且其他指令会需要 Write Result 的结果
+ * Issue 要在 RS update 和 Load Buffer update之前，
+ * 因为有的指令Issue完之后直接就可以进入 RS 和 LB 了
+ * 其他的顺序没有太大的关系
+ * 
+ * 详细内容：
+ * Write Result --  取 arithmeticComponentStatus 中完成的指令，如果是JUMP，释放保留站，
+ *                  修改pc；如果是其他的，释放保留站，计算结果，并广播
+ * Issue --         进入保留站或者是 Load Buffer（上个周期执行完指令的已经从中清除了）
+ *                  如果是 JUMP 的话，要设置 jumpIssued，暂停后续发射
+ *                  由于 JUMP 会暂停发射了，因此不会有多个 JUMP 都发射了的情况
+ * Execute --       递减剩余周期数，并做 log
+ * RS update --     取就绪的指令，进入运算部件，操作的时候如下：
+ *                  把所有就绪的行序号放进一个 vector，按照 ready time 然后 issue time
+ *                  排序，按顺序进入运算部件
+ * Load Buffer update --    和 RS 相同
+ * @param step 原本是用来单步运行的，实际没用用到
+ */
 void Tomasulo::run(bool step) {
     while (true) {
         bool finished = instructionQueue.size() == pc &&
@@ -15,7 +36,8 @@ void Tomasulo::run(bool step) {
 
         if (finished) {
             assert(registerStatus.empty());
-            logger.printSummary();
+            if (verbose)
+                logger.printSummary();
             return;
         }
 
@@ -23,12 +45,12 @@ void Tomasulo::run(bool step) {
 
         // Write Result (of last cycle)
         for (int j = 0; j < ArithmeticComponentStatus::TOTAL_COMPONENT_COUNT; ++j) {
-            if (arithmeticComponentStatus.op[j] != Instruction::Operation::NOP) {   // working
-                if (arithmeticComponentStatus.cyclesRemain[j] == 0) {   // complete
+            if (arithmeticComponentStatus.op[j] != Instruction::Operation::NOP) { // working
+                if (arithmeticComponentStatus.cyclesRemain[j] == 0) {             // complete
                     if (arithmeticComponentStatus.op[j] == Instruction::Operation::JUMP) {
-                        long long target = arithmeticComponentStatus.RS[j]; // broadcast target
+                        int target = arithmeticComponentStatus.RS[j]; // broadcast target
                         // reset reservation station
-                        reservationStation.busy[(size_t) target & MASK_LOW] = false;
+                        reservationStation.busy[(unsigned int)target & MASK_LOW] = false;
                         // reset the Arithmetic Component
                         arithmeticComponentStatus.op[j] = Instruction::Operation::NOP;
                         jumpIssued = false;
@@ -37,13 +59,13 @@ void Tomasulo::run(bool step) {
                         auto s2 = arithmeticComponentStatus.input1[j];
                         if (s1 == s2) {
                             pc += jumpDiff;
-                            pc--;   // JUMP itself
+                            pc--; // JUMP itself
                         }
                     } else {
-                        long long target = arithmeticComponentStatus.RS[j]; // broadcast target
+                        int target = arithmeticComponentStatus.RS[j]; // broadcast target
 
                         // calculate broadcast value
-                        long long value = 0;
+                        int value = 0;
                         auto operation = arithmeticComponentStatus.op[j];
                         auto s1 = arithmeticComponentStatus.input0[j];
                         auto s2 = arithmeticComponentStatus.input1[j];
@@ -68,9 +90,9 @@ void Tomasulo::run(bool step) {
                         if (arithmeticComponentStatus.op[j] ==
                             Instruction::Operation::LD) // reset reservation station or load buffer
                         {
-                            loadBuffer.busy[(size_t) target & MASK_LOW] = false;
+                            loadBuffer.busy[(unsigned int)target & MASK_LOW] = false;
                         } else {
-                            reservationStation.busy[(size_t) target & MASK_LOW] = false;
+                            reservationStation.busy[(unsigned int)target & MASK_LOW] = false;
                         }
 
                         // reset the Arithmetic Component
@@ -79,7 +101,7 @@ void Tomasulo::run(bool step) {
                         // broadcast to RS, Registers
                         reservationStation.receiveBroadcast(target, value);
                         registerStatus.receiveBroadcast(target, value);
-                        /* loadBuffer.receiveBroadcast(target, value); */   // loadBuffer doesn't need to receive broadcast
+                        /* loadBuffer.receiveBroadcast(target, value); */ // loadBuffer doesn't need to receive broadcast
 
                         logger.logWriteResult(arithmeticComponentStatus.pc[j]);
                     }
@@ -89,117 +111,143 @@ void Tomasulo::run(bool step) {
         // Issue
         if (pc < instructionQueue.size() && !jumpIssued) {
             Instruction ins = instructionQueue[pc];
-            long long id;
+            int id;
             switch (ins.operation) {
-                case Instruction::Operation::LD:
-                    id = loadBuffer.getFreeBuffer();
-                    if (id != -1) {
-                        loadBuffer.use(id, ins.operands[1].getValue(), pc); // operands[1] is value
-                        registerStatus.setTag(ins.operands[0].getValue(),
-                                              (long long) Tomasulo::LoadBuffer::getHashTag(id));// operands[0] is value
-                        logger.logIssue(pc);
-                        pc++;
+            case Instruction::Operation::LD:
+                id = loadBuffer.getFreeBuffer();
+                if (id != -1) {
+                    loadBuffer.use(id, ins.operands[1].getValue(), pc, cycleCount); // operands[1] is value
+                    registerStatus.setTag(ins.operands[0].getValue(),
+                                          Tomasulo::LoadBuffer::getHashTag(id)); // operands[0] is value
+                    logger.logIssue(pc);
+                    pc++;
+                }
 
-                    }
-
-                    break;
-                case Instruction::Operation::ADD:
-                case Instruction::Operation::SUB:
-                case Instruction::Operation::MUL:
-                case Instruction::Operation::DIV:
-                    id = reservationStation.getFreeStation(ins.operation);
-                    if (id != -1) {
-                        reservationStation.use(id, ins, registerStatus, pc);
-                        logger.logIssue(pc);
-                        pc++;
-                    }
-                    break;
-                case Instruction::Operation::JUMP:
-                    id = reservationStation.getFreeStation(ins.operation);
-                    if (id != -1) {
-                        reservationStation.use(id, ins, registerStatus, pc);
-                        jumpIssued = true;
-                        jumpDiff = ins.operands[2].getValue();
-                        logger.logIssue(pc);
-                        pc++;
-                    }
-                    break;
-                default:
-                    std::cerr << "Unknown instruction" << std::endl;
-                    break;
+                break;
+            case Instruction::Operation::ADD:
+            case Instruction::Operation::SUB:
+            case Instruction::Operation::MUL:
+            case Instruction::Operation::DIV:
+                id = reservationStation.getFreeStation(ins.operation);
+                if (id != -1) {
+                    reservationStation.use(id, ins, registerStatus, pc, cycleCount);
+                    logger.logIssue(pc);
+                    pc++;
+                }
+                break;
+            case Instruction::Operation::JUMP:
+                id = reservationStation.getFreeStation(ins.operation);
+                if (id != -1) {
+                    reservationStation.use(id, ins, registerStatus, pc, cycleCount);
+                    jumpIssued = true;
+                    jumpDiff = ins.operands[2].getValue();
+                    logger.logIssue(pc);
+                    pc++;
+                }
+                break;
+            default:
+                std::cerr << "Unknown instruction" << std::endl;
+                break;
             }
         }
 
         // Execute
         for (int j = 0; j < ArithmeticComponentStatus::TOTAL_COMPONENT_COUNT; ++j) {
-            if (arithmeticComponentStatus.op[j] != Instruction::Operation::NOP) {   // working
+            if (arithmeticComponentStatus.op[j] != Instruction::Operation::NOP) { // working
                 // no component should be ready, since checked before during Write Result
-                assert(arithmeticComponentStatus.cyclesRemain[j]!=0);
+                assert(arithmeticComponentStatus.cyclesRemain[j] != 0);
                 arithmeticComponentStatus.cyclesRemain[j]--;
-                if(arithmeticComponentStatus.cyclesRemain[j]==0){
+                if (arithmeticComponentStatus.cyclesRemain[j] == 0) {
                     logger.logExecuteComplete(arithmeticComponentStatus.pc[j]);
                 }
             }
         }
         // RS update, if ready, push into ALU
-        // TODO: sort RS ready items by time
+        std::vector<int> ready_rs_id;
         for (int jj = 0; jj < ReservationStation::TOTAL_STATION_COUNT; ++jj) {
             if (reservationStation.busy[jj] && reservationStation.tagSource0[jj] == 0 &&
-                reservationStation.tagSource1[jj] == 0 && !reservationStation.executing[jj]) {   // ready
-
-
-                // if there is empty ALU, start executing
-                auto operation = reservationStation.op[jj];
-                long long compId = -1;
-                if (operation == Instruction::Operation::ADD || operation == Instruction::Operation::SUB ||
-                    operation == Instruction::Operation::JUMP) {
-                    compId = arithmeticComponentStatus.getFreeAddComponent();
-                } else if (operation == Instruction::Operation::MUL || operation == Instruction::Operation::DIV) {
-                    compId = arithmeticComponentStatus.getFreeMultComponent();
+                reservationStation.tagSource1[jj] == 0 && !reservationStation.executing[jj]) { // ready
+                if (reservationStation.readyTime[jj] == 0) {                                   // first time ready
+                    reservationStation.readyTime[jj] = cycleCount;
+                    logger.logReady(reservationStation.pc[jj]);
                 }
-                if (compId != -1) { // free unit
-                    arithmeticComponentStatus.use(compId, (long long) ReservationStation::getHashTag(jj), operation,
-                                                  reservationStation.source0[jj], reservationStation.source1[jj], reservationStation.pc[jj]);
-                    reservationStation.executing[jj] = true;
-                }
+                ready_rs_id.push_back(jj);
             }
         }
-        // check Load Buffer
-        auto loadComponentId = arithmeticComponentStatus.getFreeLoadComponent();
-        if (loadComponentId != -1) {
-            std::vector<int> readyLB;
-            for (int i = 0; i < NUMBER_OF_LOAD_BUFFER; ++i) {
-                if (loadBuffer.busy[i] && !loadBuffer.executing[i])
-                    readyLB.push_back(i);
+        // first sort by ready time, then by issue time
+        std::sort(ready_rs_id.begin(), ready_rs_id.end(), [&](int lhs, int rhs) {
+            if (reservationStation.readyTime[lhs] != reservationStation.readyTime[rhs])
+                return reservationStation.readyTime[lhs] < reservationStation.readyTime[rhs];
+            else
+                return reservationStation.issueCycle[lhs] < reservationStation.issueCycle[rhs];
+        });
+        for (int id : ready_rs_id) {
+            // if there is empty ALU, start executing
+            auto operation = reservationStation.op[id];
+            int compId = -1;
+            if (operation == Instruction::Operation::ADD || operation == Instruction::Operation::SUB ||
+                operation == Instruction::Operation::JUMP) {
+                compId = arithmeticComponentStatus.getFreeAddComponent();
+            } else if (operation == Instruction::Operation::MUL || operation == Instruction::Operation::DIV) {
+                compId = arithmeticComponentStatus.getFreeMultComponent();
             }
-
-            if (!readyLB.empty()) {
-                // TODO: sort and get the first
-                int buffer_id = readyLB[0];
-                arithmeticComponentStatus.use(loadComponentId, (long long) LoadBuffer::getHashTag(buffer_id),
-                                              Instruction::Operation::LD, loadBuffer.value[buffer_id], 0, loadBuffer.pc[buffer_id]);
-                loadBuffer.executing[buffer_id] = true;
+            if (compId != -1) { // free unit
+                arithmeticComponentStatus.use(compId, ReservationStation::getHashTag(id), operation,
+                                              reservationStation.source0[id], reservationStation.source1[id],
+                                              reservationStation.pc[id]);
+                reservationStation.executing[id] = true;
             }
         }
 
-        logger.printStatus();
+        // Load Buffer update, if there is an empty loader, push into loader
+        std::vector<int> readyLB;
+        for (int i = 0; i < NUMBER_OF_LOAD_BUFFER; ++i) {
+            if (loadBuffer.busy[i] && !loadBuffer.executing[i]) { // is ready
+                if (loadBuffer.readyTime[i] == 0) {               // first time ready
+                    loadBuffer.readyTime[i] = cycleCount;
+                    logger.logReady(loadBuffer.pc[i]);
+                }
+                readyLB.push_back(i);
+            }
+        }
+        std::sort(readyLB.begin(), readyLB.end(), [&](int lhs, int rhs) {
+            if (loadBuffer.readyTime[lhs] != loadBuffer.readyTime[rhs])
+                return loadBuffer.readyTime[lhs] < loadBuffer.readyTime[rhs];
+            else
+                return loadBuffer.issueCycle[lhs] < loadBuffer.issueCycle[rhs];
+        });
+        for (int buffer_id : readyLB) {
+            auto loadComponentId = arithmeticComponentStatus.getFreeLoadComponent();
+            if (loadComponentId != -1) {
+                if (!readyLB.empty()) {
+                    arithmeticComponentStatus.use(loadComponentId, LoadBuffer::getHashTag(buffer_id),
+                                                  Instruction::Operation::LD, loadBuffer.value[buffer_id], 0,
+                                                  loadBuffer.pc[buffer_id]);
+                    loadBuffer.executing[buffer_id] = true;
+                }
+            }
+        }
+
+        if (verbose)
+            logger.printStatus();
         cycleCount++;
         /* cycle end */
     }
 }
 
-size_t Tomasulo::getCycleCount() const {
+int Tomasulo::getCycleCount() const {
     return cycleCount;
 }
 
 bool Tomasulo::ReservationStation::empty() const {
     for (auto i : busy) {
-        if (i)return false;
+        if (i)
+            return false;
     }
     return true;
 }
 
-void Tomasulo::ReservationStation::receiveBroadcast(long long target, long long value) {
+void Tomasulo::ReservationStation::receiveBroadcast(int target, int value) {
     for (int i = 0; i < TOTAL_STATION_COUNT; ++i) {
         if (tagSource0[i] == target) {
             source0[i] = value;
@@ -212,7 +260,13 @@ void Tomasulo::ReservationStation::receiveBroadcast(long long target, long long 
     }
 }
 
-long long Tomasulo::ReservationStation::getFreeStation(Instruction::Operation next) const {
+/**
+ * @brief 检查是否有空的 RS
+ * 
+ * @param next 下一个 Operation 类型
+ * @return int 如果有空行，返回行号，否则-1
+ */
+int Tomasulo::ReservationStation::getFreeStation(Instruction::Operation next) const {
     if (next == Instruction::Operation::ADD || next == Instruction::Operation::SUB ||
         next == Instruction::Operation::JUMP) {
         for (int i = ADD_BEGIN; i < ADD_BEGIN + NUMBER_OF_ADD_RESERVATION; ++i) {
@@ -234,10 +288,23 @@ long long Tomasulo::ReservationStation::getFreeStation(Instruction::Operation ne
     }
 }
 
-void Tomasulo::ReservationStation::use(long long id, const Instruction &ins, RegisterStatus &regStatus, size_t inc_pc) {
+/**
+ * @brief 进入一个 RS 的函数
+ * 
+ * @param id 要使用的行序号
+ * @param ins 原始指令
+ * @param regStatus 寄存器情况
+ * @param ins_pc 当前pc
+ * @param currentCycle 当前cycle
+ */
+void Tomasulo::ReservationStation::use(int id, const Instruction &ins, RegisterStatus &regStatus, int ins_pc,
+                                       int currentCycle) {
     assert(!busy[id]);
     executing[id] = false; // reset
-    pc[id] = inc_pc;
+    issueCycle[id] = currentCycle;
+    pc[id] = ins_pc;
+    readyTime[id] = 0;
+
     if (ins.operation == Instruction::Operation::JUMP) {
         assert(ins.operands[0].isImmediate() && ins.operands[1].isRegister() &&
                ins.operands[2].isImmediate());
@@ -245,31 +312,29 @@ void Tomasulo::ReservationStation::use(long long id, const Instruction &ins, Reg
         busy[id] = true;
 
         // src0
-        long long sourceReg0 = ins.operands[1].getValue();
-        if (regStatus.tag[sourceReg0] == 0) {  // is immediate value
+        int sourceReg0 = ins.operands[1].getValue();
+        if (regStatus.tag[sourceReg0] == 0) { // is immediate value
             source0[id] = regStatus.value[sourceReg0];
             tagSource0[id] = 0;
         } else {
             tagSource0[id] = regStatus.value[sourceReg0];
         }
         // src 1, immediate value
-        // need to convert from 64 bit to 32 bit
-        source1[id] = static_cast<long long>(((size_t) ins.operands[0].getValue()) &
-                                             MASK_32_BIT); // to get rid of compiler warning
+        source1[id] = ins.operands[0].getValue();
         tagSource1[id] = false;
 
     } else {
         assert(ins.operands[0].isRegister() && ins.operands[1].isRegister() &&
-               ins.operands[2].isRegister());   // all registers
+               ins.operands[2].isRegister()); // all registers
         op[id] = ins.operation;
         busy[id] = true;
-        long long sinkReg, sourceReg0, sourceReg1;
+        int sinkReg, sourceReg0, sourceReg1;
         sinkReg = ins.operands[0].getValue();
         sourceReg0 = ins.operands[1].getValue();
         sourceReg1 = ins.operands[2].getValue();
 
         // src0
-        if (regStatus.tag[sourceReg0] == 0) {  // is immediate value
+        if (regStatus.tag[sourceReg0] == 0) { // is immediate value
             source0[id] = regStatus.value[sourceReg0];
             tagSource0[id] = 0;
         } else {
@@ -277,7 +342,7 @@ void Tomasulo::ReservationStation::use(long long id, const Instruction &ins, Reg
         }
 
         // src1
-        if (regStatus.tag[sourceReg1] == 0) {  // is immediate value
+        if (regStatus.tag[sourceReg1] == 0) { // is immediate value
             source1[id] = regStatus.value[sourceReg1];
             tagSource1[id] = 0;
         } else {
@@ -286,36 +351,35 @@ void Tomasulo::ReservationStation::use(long long id, const Instruction &ins, Reg
 
         // sink
         regStatus.tag[sinkReg] = true;
-        regStatus.value[sinkReg] = (long long) getHashTag(id);
+        regStatus.value[sinkReg] = getHashTag(id);
     }
-
 }
 
 void Tomasulo::ReservationStation::clear() {
-    for (auto &x:busy) {
+    for (auto &x : busy) {
         x = false;
     }
-    for (auto &x:op) {
+    for (auto &x : op) {
         x = Instruction::Operation::NOP;
     }
-    for (auto &x:tagSource0) {
+    for (auto &x : tagSource0) {
         x = 0;
     }
-    for (auto &x:tagSource1) {
+    for (auto &x : tagSource1) {
         x = 0;
     }
-    for (auto &x:source0) {
+    for (auto &x : source0) {
         x = 0;
     }
-    for (auto &x:source1) {
+    for (auto &x : source1) {
         x = 0;
     }
-    for (auto &x:executing) {
+    for (auto &x : executing) {
         x = false;
     }
 }
 
-void Tomasulo::RegisterStatus::receiveBroadcast(long long target, long long v) {
+void Tomasulo::RegisterStatus::receiveBroadcast(int target, int v) {
     for (int i = 0; i < MAX_REGISTER_ALLOWED; ++i) {
         if (tag[i] && value[i] == target) {
             tag[i] = false;
@@ -325,42 +389,51 @@ void Tomasulo::RegisterStatus::receiveBroadcast(long long target, long long v) {
 }
 
 void Tomasulo::RegisterStatus::clear() {
-    for (auto &x: tag) x = false;
-    for (auto &x: value) x = 0;
+    for (auto &x : tag)
+        x = false;
+    for (auto &x : value)
+        x = 0;
 }
 
 bool Tomasulo::RegisterStatus::empty() const {
-    for (bool i: tag) { if (i)return false; }
+    for (bool i : tag) {
+        if (i)
+            return false;
+    }
     return true;
 }
 
 bool Tomasulo::ArithmeticComponentStatus::empty() const {
     for (auto i : tag) {
-        if (i != 0) return false;
+        if (i != 0)
+            return false;
     }
     return true;
 }
 
-long long Tomasulo::ArithmeticComponentStatus::getFreeLoadComponent() const {
+int Tomasulo::ArithmeticComponentStatus::getFreeLoadComponent() const {
     for (int i = Tomasulo::ArithmeticComponentStatus::LOAD_BEGIN;
          i < Tomasulo::ArithmeticComponentStatus::LOAD_BEGIN + NUMBER_OF_LOAD_COMPONENT; ++i) {
-        if (op[i] == Instruction::Operation::NOP)return i;
+        if (op[i] == Instruction::Operation::NOP)
+            return i;
     }
     return -1;
 }
 
-long long Tomasulo::ArithmeticComponentStatus::getFreeMultComponent() const {
+int Tomasulo::ArithmeticComponentStatus::getFreeMultComponent() const {
     for (int i = Tomasulo::ArithmeticComponentStatus::MULT_BEGIN;
          i < Tomasulo::ArithmeticComponentStatus::MULT_BEGIN + NUMBER_OF_MULTIPLY_COMPONENT; ++i) {
-        if (op[i] == Instruction::Operation::NOP)return i;
+        if (op[i] == Instruction::Operation::NOP)
+            return i;
     }
     return -1;
 }
 
-long long Tomasulo::ArithmeticComponentStatus::getFreeAddComponent() const {
+int Tomasulo::ArithmeticComponentStatus::getFreeAddComponent() const {
     for (int i = Tomasulo::ArithmeticComponentStatus::ADD_BEGIN;
          i < Tomasulo::ArithmeticComponentStatus::ADD_BEGIN + NUMBER_OF_ADD_COMPONENT; ++i) {
-        if (op[i] == Instruction::Operation::NOP)return i;
+        if (op[i] == Instruction::Operation::NOP)
+            return i;
     }
     return -1;
 }

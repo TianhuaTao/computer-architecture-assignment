@@ -4,17 +4,17 @@
 
 #include "Logger.h"
 #include "Tomasulo.h"
-#include <iostream>
+#include <fstream>
 #include <iomanip>
+#include <iostream>
 #include <sstream>
-
 using namespace std;
 
-template<typename T>
+template <typename T>
 std::string int_to_hex(T i) {
     std::stringstream stream;
     stream << "0x"
-           << std::setfill('0') << std::setw(sizeof(T))
+           << std::setfill('0') << std::setw(sizeof(T) * 2)
            << std::hex << i;
     return stream.str();
 }
@@ -26,69 +26,69 @@ void horizontalLine(int n) {
 
 std::string toString(Instruction::Operation op) {
     switch (op) {
-        case Instruction::Operation::NOP:
-            return "NOP";
-        case Instruction::Operation::ADD:
-            return "ADD";
-        case Instruction::Operation::SUB:
-            return "SUB";
-        case Instruction::Operation::MUL:
-            return "MUL";
-        case Instruction::Operation::DIV:
-            return "DIV";
-        case Instruction::Operation::LD:
-            return "LD";
-        case Instruction::Operation::JUMP:
-            return "JUMP";
-        default:
-            return "";
+    case Instruction::Operation::NOP:
+        return "NOP";
+    case Instruction::Operation::ADD:
+        return "ADD";
+    case Instruction::Operation::SUB:
+        return "SUB";
+    case Instruction::Operation::MUL:
+        return "MUL";
+    case Instruction::Operation::DIV:
+        return "DIV";
+    case Instruction::Operation::LD:
+        return "LD";
+    case Instruction::Operation::JUMP:
+        return "JUMP";
+    default:
+        return "";
     }
 }
-std::string toString(Instruction::Operand o ) {
-   if(o.isRegister()){
-       return "R"+to_string(o.getValue());
-   } else{
-       return int_to_hex(o.getValue()&Tomasulo::MASK_32_BIT);
-   }
+std::string toString(Instruction::Operand o) {
+    if (o.isRegister()) {
+        return "R" + to_string(o.getValue());
+    } else {
+        return int_to_hex(o.getValue());
+    }
 }
 std::string toString(Instruction ins) {
     std::stringstream stream;
-    stream<<std::left<< std::setfill(' ') << std::setw(40);
-    if(ins.operation==Instruction::Operation::LD)
-        stream << toString(ins.operation)+','+toString(ins.operands[0])+','+toString(ins.operands[1]);
+    stream << std::left << std::setfill(' ') << std::setw(40);
+    if (ins.operation == Instruction::Operation::LD)
+        stream << toString(ins.operation) + ',' + toString(ins.operands[0]) + ',' + toString(ins.operands[1]);
     else
-        stream << toString(ins.operation)+','+toString(ins.operands[0])+','+toString(ins.operands[1])+','+toString(ins.operands[2]);
+        stream << toString(ins.operation) + ',' + toString(ins.operands[0]) + ',' + toString(ins.operands[1]) + ',' + toString(ins.operands[2]);
     return stream.str();
 }
 
-std::string Logger::hashTagToLabel(long long hashTag) const {
+std::string Logger::hashTagToLabel(int hashTag) const {
     if (hashTag == 0)
         return string();
     string s;
-    size_t high = (size_t) hashTag & Tomasulo::MASK_HIGH;
-    size_t low = (size_t) hashTag & Tomasulo::MASK_LOW;
+    size_t high = (size_t)hashTag & Tomasulo::MASK_HIGH;
+    size_t low = (size_t)hashTag & Tomasulo::MASK_LOW;
     switch (high) {
-        case Tomasulo::LOAD_BUFFER_TAG :
-            s = "LB" + to_string(low + 1);
-            break;
-        case Tomasulo::RESERVATION_STATION_TAG :
-            if (low < Tomasulo::ReservationStation::MULT_BEGIN)
-                s = "ARS" + to_string(low + 1);
-            else
-                s = "MRS" + to_string(low + 1 - Tomasulo::ReservationStation::MULT_BEGIN);
-            break;
-        case Tomasulo::REGISTER_STATUS_TAG :
-            s = "R" + to_string(low);
-            break;
-        default :
-            break;
+    case Tomasulo::LOAD_BUFFER_TAG:
+        s = "LB" + to_string(low + 1);
+        break;
+    case Tomasulo::RESERVATION_STATION_TAG:
+        if (low < Tomasulo::ReservationStation::MULT_BEGIN)
+            s = "ARS" + to_string(low + 1);
+        else
+            s = "MRS" + to_string(low + 1 - Tomasulo::ReservationStation::MULT_BEGIN);
+        break;
+    case Tomasulo::REGISTER_STATUS_TAG:
+        s = "R" + to_string(low);
+        break;
+    default:
+        break;
     }
 
     return s;
 }
 
 void Logger::printStatus() const {
-    cout << "Cycle " << tomasulo.cycleCount << " (PC="<<tomasulo.pc<<")\n";
+    cout << "Cycle " << tomasulo.cycleCount << " (PC=" << tomasulo.pc << ")\n";
     printReservationStation();
     cout << endl;
     printLoadBuffer();
@@ -121,15 +121,14 @@ void Logger::printLoadBuffer() const {
         printRow(colCnt, data, cw);
     }
     horizontalLine(colCnt * cw + colCnt + 1);
-
 }
 
 void Logger::printRow(int columnCount, const std::vector<std::string> &data, int cellWidth) const {
     cout << "|";
     for (int i = 0; i < columnCount; ++i) {
-        int width ;
-        width = cellWidth<data[i].size()? (int)data[i].size(): cellWidth;
-        int spaceCount = width - (int) data[i].size();
+        int width;
+        width = cellWidth < data[i].size() ? (int)data[i].size() : cellWidth;
+        int spaceCount = width - (int)data[i].size();
         int space_ahead = spaceCount / 2;
         int space_after = spaceCount - space_ahead;
         for (int j = 0; j < space_ahead; ++j) {
@@ -185,15 +184,13 @@ void Logger::printReservationStation() const {
         printRow(colCnt, data, 12);
     }
     horizontalLine(colCnt * 12 + colCnt + 1);
-
 }
 
 Logger::Logger(Tomasulo &t, const std::string &outFilename, const std::vector<Instruction> &queue)
-        : tomasulo(t),
-          outFilename(outFilename),
-          instructionQueue(queue),
-          records(queue.size()) {
-
+    : tomasulo(t),
+      outFilename(outFilename),
+      instructionQueue(queue),
+      records(queue.size()) {
 }
 
 void Logger::setOutFilename(const string &outFilename) {
@@ -208,7 +205,7 @@ void Logger::printRegisters() const {
     horizontalLine(colCnt * cw + colCnt + 1);
     printRow(colCnt, data, cw);
     horizontalLine(colCnt * cw + colCnt + 1);
-    for (int i = 0; i < Tomasulo::RegisterStatus::MAX_REGISTER_ALLOWED/4; ++i) {    // print 8
+    for (int i = 0; i < Tomasulo::RegisterStatus::MAX_REGISTER_ALLOWED; ++i) { // print 8
         data[0] = "R" + to_string(i);
         if (tomasulo.registerStatus.tag[i]) {
             data[1] = hashTagToLabel(tomasulo.registerStatus.value[i]);
@@ -221,7 +218,6 @@ void Logger::printRegisters() const {
         printRow(colCnt, data, cw);
     }
     horizontalLine(colCnt * cw + colCnt + 1);
-
 }
 
 void Logger::printArithmeticComponent() const {
@@ -259,12 +255,12 @@ void Logger::printArithmeticComponent() const {
 void Logger::printSummary() const {
     cout << "Summary\n";
     const int colCnt = 5;
-    const int cw = 20;
+    const int cw = 14;
     vector<string> data = {"PC Number", "Instruction", "Issue", "Exec Comp", "Write Result"};
     data[1].resize(40, ' ');
-    horizontalLine(colCnt * cw + colCnt + 1-cw+40);
+    horizontalLine(colCnt * cw + colCnt + 1 - cw + 40);
     printRow(colCnt, data, cw);
-    horizontalLine(colCnt * cw + colCnt + 1-cw+40);
+    horizontalLine(colCnt * cw + colCnt + 1 - cw + 40);
     for (int i = 0; i < instructionQueue.size(); ++i) {
         data[0] = to_string(i);
         data[1] = toString(instructionQueue[i]);
@@ -273,26 +269,33 @@ void Logger::printSummary() const {
         data[4] = to_string(records[i].writeResult);
         printRow(colCnt, data, cw);
     }
-    horizontalLine(colCnt * cw + colCnt + 1-cw+40);
-
+    horizontalLine(colCnt * cw + colCnt + 1 - cw + 40);
 }
 
 void Logger::logIssue(int lineno) {
-    if(records[lineno].issue == 0)  // record the first time
+    if (records[lineno].issue == 0) // record the first time
         records[lineno].issue = tomasulo.getCycleCount();
 }
 
 void Logger::logReady(int lineno) {
-    if(records[lineno].ready == 0)  // record the first time
+    if (records[lineno].ready == 0) // record the first time
         records[lineno].ready = tomasulo.getCycleCount();
 }
 
 void Logger::logExecuteComplete(int lineno) {
-    if(records[lineno].execCemplete == 0)  // record the first time
+    if (records[lineno].execCemplete == 0) // record the first time
         records[lineno].execCemplete = tomasulo.getCycleCount();
 }
 
 void Logger::logWriteResult(int lineno) {
-    if(records[lineno].writeResult == 0)  // record the first time
+    if (records[lineno].writeResult == 0) // record the first time
         records[lineno].writeResult = tomasulo.getCycleCount();
+}
+
+void Logger::writeLog() {
+    ofstream os(outFilename);
+    for (int i = 0; i < records.size(); ++i) {
+        os << records[i].issue << " " << records[i].execCemplete << " " << records[i].writeResult << "\n";
+    }
+    os.close();
 }
